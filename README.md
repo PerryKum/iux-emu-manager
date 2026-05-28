@@ -2,6 +2,25 @@
 
 ROCKNIX / iux 掌机上的原生小程序（SDL2，640×480），用于在机内管理首页**分组**与**模拟器入口**的显示/隐藏，以及入口所在分组。通过移动 `sections/` 与 `sections/emubak/` 下的文件和目录生效。
 
+## 部署
+
+将仓库内文件拷到 TF 卡（挂载为 `/storage`）对应路径。文本类用 **UTF-8、LF**；`emumanager`、`emumanager.sh` 需 **`chmod +x`**。
+
+| 仓库路径 | 掌机路径 | 说明 |
+|----------|----------|------|
+| `dist/emumanager` | `/storage/iux/emumanager/emumanager` | 主程序（aarch64 二进制） |
+| `packaging/emumanager.sh` | `/storage/iux/emumanager/emumanager.sh` | 启动脚本（首页 `exec` 指向此文件） |
+| `packaging/emumanager` | `/storage/iux/sections/applications/emumanager` | 首页「应用」分组入口描述 |
+| `packaging/emumanager.png` | `/storage/iux/skins/Default/icons/emumanager.png` | 菜单图标（入口里 `icon=icons/emumanager.png`） |
+
+程序运行时读写的路径：
+
+| 用途 | 掌机路径 |
+|------|----------|
+| 显示中的分组 | `/storage/iux/sections/<分组名>/` |
+| 隐藏的分组（整组目录） | `/storage/iux/sections/emubak/<分组名>/` |
+| 隐藏的单个入口 | `/storage/iux/sections/emubak/<入口 id>` |
+
 ## 功能概览
 
 ### 分组（标签页「分组」）
@@ -48,18 +67,6 @@ ROCKNIX / iux 掌机上的原生小程序（SDL2，640×480），用于在机内
 | X / Y | 翻页 |
 | START | 保存并退出（需确认） |
 | B / Select | 不保存退出；或在确认框中取消 |
-
-## 设备路径
-
-| 用途 | 路径 |
-|------|------|
-| 程序 | `/storage/iux/emumanager/emumanager` |
-| 启动脚本 | `/storage/iux/emumanager/emumanager.sh` |
-| 首页入口 | `/storage/iux/sections/applications/emumanager` |
-| 图标 | `/storage/iux/skins/Default/icons/emumanager.png` |
-| 显示中的分组 | `/storage/iux/sections/<分组名>/` |
-| 隐藏的分组目录 | `/storage/iux/sections/emubak/<分组名>/` |
-| 隐藏的单个入口 | `/storage/iux/sections/emubak/<入口 id>` |
 
 ## 在 Windows 上编译
 
