@@ -1,0 +1,6 @@
+sysroot/
+sysroot_pkgs/
+.tools/
+scripts/__pycache__/
+*.pyc
+*.log

@@ -1,0 +1,10 @@
+title=Emu Manager
+description=Manage home screen groups and emulators
+icon=icons/emumanager.png
+exec=/storage/iux/emumanager/emumanager.sh
+selectorbrowser=false
+wrapper=true
+dontleave=false
+perfMode=true
+thiscore=no
+strcore=noe=no
